@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 
@@ -5,18 +6,17 @@ import PropTypes from "prop-types";
 // otherwise it would remain in the position of the previous view. 
 // Investigate more about this React behavior :D 
 
-const ScrollToTop = ({ location, children }) => {
-    const prevLocation = useRef(location);
+class ScrollToTop extends React.Component {
+    componentDidUpdate(prevProps) {
+        if (this.props.location !== prevProps.location) {
 
-    useEffect(() => {
-        if (location !== prevLocation.current) {
-            window.scrollTo(0, 0);
         }
-        prevLocation.current = location;
-    }, [location]);
+    }
+    render() {
+        return this.props.children;
+    }
+}
 
-    return children;
-};
 
 export default ScrollToTop;
 
