@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as yup from 'yup';
+import * as Yup from 'yup';
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 

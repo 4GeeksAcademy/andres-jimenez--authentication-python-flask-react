@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react'
+import React, { createContext, useState, useEffect } from 'react'
 import getState from "./flux.jsx"
 
 export const Context = createContext(null);
@@ -18,19 +18,17 @@ export const injectContext = (PassedComponent) => {
         );
 
         useEffect(() => {
-            if (state.actions && state.actions.syncTokenFromLocalStore) {
-                state.actions.syncTokenFromLocalStore();
-            }
+            state.actions.syncTokenFromLocalStore();
         }, []);
 
         return(
-            <appContext.Provider value={state}>
+            <Context.Provider value={state}>
                 <PassedComponent {...props} />
-            </appContext.Provider>
+            </Context.Provider>
         );
     };
 
     return StoreWrapper;
 };
 
-export default Context;
+export default injectContext;
